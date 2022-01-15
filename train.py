@@ -34,7 +34,7 @@ def main():
     summary_writer = tf.summary.create_file_writer(log_dir)
     # data generator
     coco_data = CoCoDataGenrator(
-        coco_annotation_file='../../data/coco2017/annotations/instances_val2017.json',
+        coco_annotation_file='./yolov5_in_tf2_keras/data/instances_val2017.json',
         train_img_nums=train_img_nums,
         img_shape=image_shape,
         batch_size=batch_size,
@@ -91,8 +91,9 @@ def main():
                 total_loss = loss_box + loss_obj + loss_cls
                 grad = tape.gradient(total_loss, yolov5.trainable_variables)
                 optimizer.apply_gradients(zip(grad, yolov5.trainable_variables))
-                # print("-------epoch {}---batch {}--------------".format(epoch, batch))
+                print("-------epoch {}---batch {}--------------".format(epoch, batch))
                 # print("loss_box:{}, loss_obj:{}, loss_cls:{}".format(loss_box, loss_obj, loss_cls))
+                print("TOTAL LOSS",total_loss)
 
                 # Scalar
                 with summary_writer.as_default():
