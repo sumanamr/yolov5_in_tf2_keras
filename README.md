@@ -1,4 +1,4 @@
-## YOLOv5 in tesnorflow2.x-keras
+## YOLOv5 in tensorflow2.x-keras
 
 ### 模型测试
 
